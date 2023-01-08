@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Unity;
-using Unity.Entities;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Tables;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -11,22 +10,20 @@ namespace MVPToolkit.Localization
 {
     public class UILocalization : IDisposable
     {
-        private readonly VisualElement _parent;
+        private readonly VisualElement _rootVisualElement;
         private readonly LocalizedStringTable _stringTable;
-
-        // private readonly Dictionary<TextElement, string> _textElements = new();
         private StringTable _currentTable;
 
         private readonly IPropertyProvider _propertyProvider;
         private readonly Dictionary<BindableTextElement, string> _boundMap = new();
 
-        public UILocalization(LocalizedStringTable stringTable, VisualElement parent,
+        public UILocalization(LocalizedStringTable stringTable, VisualElement rootVisualElement,
             IPropertyProvider propertyProvider)
         {
             _propertyProvider = propertyProvider;
-            _parent = parent;
+            _rootVisualElement = rootVisualElement;
 
-            UpdateBindings(parent);
+            UpdateBindings();
 
             _stringTable = stringTable;
             _stringTable.TableChanged += OnStringTableChanged;
@@ -41,14 +38,18 @@ namespace MVPToolkit.Localization
             }
         }
 
-
-        private void UpdateBindings(VisualElement element)
+        private void UpdateBindings()
         {
-            foreach (var (binding, key) in _boundMap)
+            foreach (var (binding, _) in _boundMap)
             {
                 binding.Dispose();
             }
 
+            UpdateBindings(_rootVisualElement);
+        }
+
+        private void UpdateBindings(VisualElement element)
+        {
             var elementHierarchy = element.hierarchy;
             var childCount = elementHierarchy.childCount;
             for (var i = 0; i < childCount; i++)
@@ -129,7 +130,7 @@ namespace MVPToolkit.Localization
                 {
                     _boundMap[bind] = newKey;
                     Localize(bind, newKey);
-                    _parent.MarkDirtyRepaint();
+                    _rootVisualElement.MarkDirtyRepaint();
                     return;
                 }
             }
@@ -157,7 +158,7 @@ namespace MVPToolkit.Localization
                 Localize(bind, key);
             }
 
-            _parent.MarkDirtyRepaint();
+            _rootVisualElement.MarkDirtyRepaint();
         }
     }
 }

@@ -11,12 +11,15 @@ namespace MVPToolkit.StateSystem
     {
         protected override void OnCreate()
         {
-            RequireForUpdate<UISingleton>();
             RequireForUpdate<StateRequest>();
         }
 
         private UISingleton _ui;
 
+
+        /// <summary>
+        /// Update runs to process callbacks
+        /// </summary>
         protected override void OnUpdate()
         {
             if (_ui is null)

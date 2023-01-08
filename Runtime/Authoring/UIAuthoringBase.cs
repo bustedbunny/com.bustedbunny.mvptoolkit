@@ -1,19 +1,24 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.UIElements;
 
 namespace MVPToolkit.Authoring
 {
-    public abstract class UIAuthoringBase<T> : MonoBehaviour, IUIAuthoring where T : BasePresentation
+    public abstract class UIAuthoringBase<T> : UIAuthoring where T : BasePresentation
     {
         [SerializeField] private VisualTreeAsset asset;
-        public VisualTreeAsset Asset => asset;
-        public Type Type => typeof(T);
+        public override VisualTreeAsset Asset => asset;
+
+        [SerializeField] private LocalizedStringTable locale;
+        public override LocalizedStringTable Locale => locale;
+        public override Type Type => typeof(T);
     }
 
-    internal interface IUIAuthoring
+    public abstract class UIAuthoring : MonoBehaviour
     {
-        public VisualTreeAsset Asset { get; }
-        public Type Type { get; }
+        public abstract VisualTreeAsset Asset { get; }
+        public abstract Type Type { get; }
+        public abstract LocalizedStringTable Locale { get; }
     }
 }

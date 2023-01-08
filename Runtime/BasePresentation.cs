@@ -1,7 +1,7 @@
 ﻿using MVPToolkit.Localization;
 using Unity.Assertions;
 using Unity.Entities;
-using UnityEngine.Localization.Tables;
+using UnityEngine.Localization;
 using UnityEngine.UIElements;
 
 namespace MVPToolkit
@@ -88,17 +88,17 @@ namespace MVPToolkit
         {
         }
 
-        private LocaleHolder _localeHolder;
+        private LocalizedStringTable _locale;
 
 
         protected IPropertyProvider propertyProvider;
         protected UILocalization UILocalization { get; private set; }
 
-        internal void PostInit(LocaleHolder localization)
+        internal void PostInit(LocalizedStringTable localization)
         {
-            _localeHolder = localization;
-            UILocalization =
-                new UILocalization(_localeHolder.localizedStringTable, RootVisualElement, propertyProvider);
+            if (localization is null || localization.IsEmpty) return;
+            _locale = localization;
+            UILocalization = new UILocalization(_locale, RootVisualElement, propertyProvider);
         }
     }
 }

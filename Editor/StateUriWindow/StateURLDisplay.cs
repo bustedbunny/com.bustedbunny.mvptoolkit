@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 
 namespace MVPToolkit.Editor.StateUriWindow
 {
-    public class StateUriDisplay : EditorWindow
+    public class StateURLDisplay : EditorWindow
     {
         private static Type[] GetPresentations()
         {
@@ -103,12 +103,12 @@ namespace MVPToolkit.Editor.StateUriWindow
             rootVisualElement.Add(treeView);
         }
 
-        private const string BrowserTitle = "State URI Browser";
+        private const string BrowserTitle = "State URL Browser";
 
         [MenuItem("Tools/" + BrowserTitle)]
         public static void OpenWindow()
         {
-            var window = GetWindow<StateUriDisplay>();
+            var window = GetWindow<StateURLDisplay>();
             window.titleContent = new GUIContent(BrowserTitle);
         }
     }
