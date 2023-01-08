@@ -56,14 +56,14 @@ namespace MVPToolkit.StateSystem
 
         internal static string[] GetTypeUris(Type type)
         {
-            var attributes = type.GetCustomAttributes<StateUriAttribute>().ToArray();
+            var attributes = type.GetCustomAttributes<StateURLAttribute>().ToArray();
 
             return attributes.Length > 0
                 ? GetUris(attributes)
                 : new[] { type.Name.Replace("Presentation", "").Trim() };
         }
 
-        internal static string[] GetUris([NotNull] StateUriAttribute[] attributes)
+        internal static string[] GetUris([NotNull] StateURLAttribute[] attributes)
         {
             var uris = new string[attributes.Length];
             for (int i = 0; i < attributes.Length; i++)
@@ -102,7 +102,7 @@ namespace MVPToolkit.StateSystem
         {
             foreach (var methodInfo in methods)
             {
-                var attributes = methodInfo.GetCustomAttributes<StateUriAttribute>().ToArray();
+                var attributes = methodInfo.GetCustomAttributes<StateURLAttribute>().ToArray();
                 if (attributes.Length == 0) continue;
 
                 if (CheckMethodInfo(methodInfo))

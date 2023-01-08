@@ -67,7 +67,7 @@ namespace MVPToolkit.Editor.StateUriWindow
 
                 foreach (var methodInfo in methods)
                 {
-                    var attributes = methodInfo.GetCustomAttributes<StateUriAttribute>().ToArray();
+                    var attributes = methodInfo.GetCustomAttributes<StateURLAttribute>().ToArray();
 
                     if (attributes.Length == 0) continue;
                     if (StateProcessor.CheckMethodInfo(methodInfo)) continue;
