@@ -82,7 +82,8 @@ This is the difference between `StateType.Strong` and `StateType.Soft`:
 Now if you want to inspect all existing URL in current build as below -
 open custom Editor Window in `Tools/State URL Browser`
 
-![img.png](img.png)
+![image](https://user-images.githubusercontent.com/30902981/211285540-1af2c5d0-3060-4381-8313-287e6616d806.png)
+
 
 ### Localization Support
 
@@ -91,7 +92,7 @@ In order to localize your UI you will need to use Unity Localization Package.
 Simply create String Tables using this package and assigns matching table
 to your UI in your authoring component, or leave it blank if you don't need it.
 
-![img_1.png](img_1.png)
+![image](https://user-images.githubusercontent.com/30902981/211285568-076aa21f-6500-43b2-b6f2-974d4fbea6ea.png)
 
 ### Smart String Localization Support
 
@@ -103,7 +104,7 @@ In order to bind your `TextElement` to Locale you need:
 * `BindingPath` property must contain string identifier of bound property.
   Multiple properties can be split with dot, for example: `WorkerCost.WorkerValue`.
 
-![img_2.png](img_2.png)
+![image](https://user-images.githubusercontent.com/30902981/211285584-48ae20ef-7b09-4146-bf49-2465f396622f.png)
 
 2. In `OnInit` method of your `BasePresentation` class
    assign `propertyProvider` field.
