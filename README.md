@@ -1,6 +1,6 @@
 # com.bustedbunny.mvptoolkit
 
-Model-View-Presentation Toolkit for using with Unity Entities.
+Model-View-Presentation Toolkit for using UI Toolkit with Unity Entities using MVP pattern.
 
 ## How to use:
 
