@@ -42,6 +42,7 @@ Model-View-Presentation Toolkit for using UI Toolkit with Unity Entities using M
 2. Then somewhere in your code call the next code:
 
 ```
+// This code is also Burst compatible as long as you use const string
 EntityManager.SetStateRequest(StateType.Strong, "OpenMainMenu")
 ```
 
