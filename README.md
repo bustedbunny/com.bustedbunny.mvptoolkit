@@ -28,7 +28,7 @@ Model-View-Presentation Toolkit for using with Unity Entities.
 1. In order to open your screen you need to define url on your screen first.
 3. You can do it as example below.
 
-*You may also not define url, then type name excluding `Presentation` word will be used.*
+*You may also not define url, then type name excluding `Presentation` word will be used. Example: `MainMenu`.*
 
 ```
     [StateURL("OpenMainMenu")]
